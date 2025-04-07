@@ -26,7 +26,7 @@ const isAdmin = (req, res, next) => {
   next();
 };
 
-// 📝 REGISTRO
+// REGISTRO
 router.post('/register', async (req, res) => {
   const { nombre, edad, correo, contrasena, telefono } = req.body;
 
@@ -45,7 +45,7 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// 🔐 LOGIN
+// LOGIN
 router.post('/login', async (req, res) => {
   const { correo, contrasena } = req.body;
 
@@ -72,7 +72,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// 👑 RUTA PROTEGIDA – Solo admin
+// RUTA PROTEGIDA – Solo admin
 router.get('/usuarios', authMiddleware, isAdmin, async (req, res) => {
   try {
     const result = await pool.query('SELECT id, nombre, correo, edad, telefono, rol FROM usuarios');
